@@ -40,6 +40,9 @@ namespace Chapter07ProgramTableOfSquaresPROJ
             int start;
             int end;
             string buff;
+            int j;
+            int square;
+            int nextOddInteger;
             //================ Gather inputs ======================
             // Convert start from text to int
             flag = int.TryParse(txtStart.Text, out start);
@@ -63,12 +66,26 @@ namespace Chapter07ProgramTableOfSquaresPROJ
                 txtStart.Focus();
                 return;
             }
-            //================= Process and Display ==============
+            //================= Process and Display ============== EXCERCISE PAGE 174
+            //for (i = start; i <= end; i++)
+            //{
+            //    buff = string.Format("{0, 5}{1, 20}", i, i * i);
+            //    lstOutput.Items.Add(buff);
+            //}
+            //================= Process and Display ============== EXCERCISE PAGE 180
             for (i = start; i <= end; i++)
             {
-                buff = string.Format("{0, 5}{1, 20}", i, i * i);
+                nextOddInteger = 1; // Set first odd integer
+                square = 0; // Always start with square = 0
+                for (j = 0; j < i; j++) // Nested j loop
+                {
+                    square += nextOddInteger; // Sum the odd integer
+                    nextOddInteger += 2; // Set the next odd integer
+                }
+                buff = string.Format("{0, 5}{1, 20}", i, square);
                 lstOutput.Items.Add(buff);
             }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
